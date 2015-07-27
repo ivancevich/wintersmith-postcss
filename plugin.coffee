@@ -4,9 +4,9 @@ fs = require 'fs'
 path = require 'path'
 postcss = require 'postcss'
 
-module.exports = (env, callback) ->
+module.exports = (wintersmith, callback) ->
 
-  class PostCSSPlugin extends env.ContentPlugin
+  class PostCSSPlugin extends wintersmith.ContentPlugin
 
     constructor: (@_filepath, @_text) ->
 
@@ -26,7 +26,7 @@ module.exports = (env, callback) ->
           postcss(plugins)
             .process(@_text, options)
             .then (result) -> callback null, new Buffer(result.css)
-            .catch (error) -> console.error error
+            .catch (error) -> wintersmith.logger.error error.toString()
 
         catch error
           callback error
@@ -38,5 +38,5 @@ module.exports = (env, callback) ->
         return
       callback null, new PostCSSPlugin(filepath, buffer.toString())
 
-  env.registerContentPlugin 'styles', '**/*.css', PostCSSPlugin
+  wintersmith.registerContentPlugin 'styles', '**/*.css', PostCSSPlugin
   callback()
