@@ -1,0 +1,17 @@
+{
+  "name": "wintersmith-postcss",
+  "version": "1.0.0",
+  "description": "PostCSS plugin for Wintersmith",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "wintersmith",
+    "postcss"
+  ],
+  "author": "JC Ivancevich <jc.ivancevich@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "coffee-script": "^1.9.3",
+    "postcss": "^4.1.16"
+  }
+}
