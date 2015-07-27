@@ -22,9 +22,15 @@ Also, in `config.json` you can configure `postcss`:
 "postcss": {
   "from": "contents/css/main.css",
   "plugins": [{
+    "path": "./node_modules/postcss-nested"
+  }, {
     "path": "./node_modules/postcss-import"
   }, {
-    "path": "./node_modules/postcss-nested"
+    "path": "./node_modules/postcss-url",
+    "autoexec": true,
+    "params": {
+      "url": "inline"
+    }
   }, {
     "path": "./node_modules/cssnano",
     "autoexec": true

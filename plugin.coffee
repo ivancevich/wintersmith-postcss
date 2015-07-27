@@ -23,7 +23,7 @@ module.exports = (wintersmith, callback) ->
 
           plugins = options.plugins.map (p) ->
             plugin = require path.join(process.cwd(), p.path)
-            return plugin() if p.autoexec is true
+            return plugin(p.params) if p.autoexec is true
             return plugin
 
           postcss(plugins)
