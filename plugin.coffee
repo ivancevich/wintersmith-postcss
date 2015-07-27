@@ -21,7 +21,10 @@ module.exports = (wintersmith, callback) ->
           options.paths = [path.dirname(@_filepath.full)]
           options.plugins = options.plugins or []
 
-          plugins = options.plugins.map (plugin) -> require path.join(process.cwd(), plugin)
+          plugins = options.plugins.map (p) ->
+            plugin = require path.join(process.cwd(), p.path)
+            return plugin() if p.autoexec is true
+            return plugin
 
           postcss(plugins)
             .process(@_text, options)
