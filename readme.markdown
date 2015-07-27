@@ -4,7 +4,7 @@
 
 ## Install
 
-`npm install store-x --save`
+`npm install wintersmith-postcss --save`
 
 ## Usage
 
