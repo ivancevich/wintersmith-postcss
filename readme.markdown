@@ -20,6 +20,7 @@ Also, in `config.json` you can configure `postcss`:
 
 ```json
 "postcss": {
+  "entrypoint": "css/main.css",
   "from": "contents/css/main.css",
   "plugins": [{
     "path": "./node_modules/postcss-nested"

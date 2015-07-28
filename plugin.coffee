@@ -36,10 +36,9 @@ module.exports = (wintersmith, callback) ->
 
   PostCSSPlugin.fromFile = (filepath, callback) ->
     fs.readFile filepath.full, (error, buffer) ->
-      if error
-        callback error
-        return
+      return callback error if error
       callback null, new PostCSSPlugin(filepath, buffer.toString())
 
-  wintersmith.registerContentPlugin 'styles', '**/*.css', PostCSSPlugin
+  files = wintersmith.config?.postcss?.entrypoint or '**/*.css'
+  wintersmith.registerContentPlugin 'styles', files, PostCSSPlugin
   callback()
